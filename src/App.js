@@ -22,9 +22,9 @@ const App = () => {
   }, []);
 
   // Get current posts
-  const indexOfLastPost = currentPage * postsPerPage;
-  const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
+  const indexOfLastPost = currentPage * postsPerPage; //> 1 * 10
+  const indexOfFirstPost = indexOfLastPost - postsPerPage; //> 10 - 10
+  const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost); //> posts.slice(0 , 10)
 
   // Change page
   const paginate = pageNumber => setCurrentPage(pageNumber);
@@ -34,8 +34,8 @@ const App = () => {
       <h1 className='text-primary mb-3'>My Blog</h1>
       <Posts posts={currentPosts} loading={loading} />
       <Pagination
-        postsPerPage={postsPerPage}
-        totalPosts={posts.length}
+        postsPerPage={postsPerPage} //> 10
+        totalPosts={posts.length} //> valueApi.length
         paginate={paginate}
       />
     </div>
